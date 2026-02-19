@@ -183,6 +183,7 @@ h2{font-family:'DM Serif Display',serif;font-size:26px;}
   display:inline-flex;align-items:center;justify-content:center;
   padding:3px 10px;border-radius:3px;
   font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  border:1px solid rgba(15,23,42,0.18);
   min-width:58px;
 }
 .rank-badge{
@@ -222,7 +223,7 @@ table.hm tr:hover td{background:rgba(17,24,39,0.03);}
 .tok-hdr.first td{border-top:none;}
 .tok-pill{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 5px;border-radius:3px;font-size:10px;font-weight:500;}
 .tok-pill .d{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
-.hval{display:inline-flex;align-items:center;justify-content:center;padding:3px 10px;border-radius:3px;min-width:60px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;}
+.hval{display:inline-flex;align-items:center;justify-content:center;padding:3px 10px;border-radius:3px;min-width:60px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;border:1px solid rgba(15,23,42,0.18);}
 
 /* ─── SCALE ───────────────────────────────────────────── */
 .scale-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:20px;}
@@ -540,11 +541,11 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);displ
 </p>
 <div class="scale-row">
   <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;">Solved% →</span>
-  <span class="scale-item"><span class="scale-sw" style="background:#4d1a20"></span>0%</span>
-  <span class="scale-item"><span class="scale-sw" style="background:#3d2a12"></span>1–24%</span>
-  <span class="scale-item"><span class="scale-sw" style="background:#1a1a40"></span>25–59%</span>
-  <span class="scale-item"><span class="scale-sw" style="background:#0d3328"></span>60–89%</span>
-  <span class="scale-item"><span class="scale-sw" style="background:#0d5038"></span>90–100%</span>
+  <span class="scale-item"><span class="scale-sw" style="background:#fee2e2"></span>0%</span>
+  <span class="scale-item"><span class="scale-sw" style="background:#fef3c7"></span>1–24%</span>
+  <span class="scale-item"><span class="scale-sw" style="background:#dbeafe"></span>25–59%</span>
+  <span class="scale-item"><span class="scale-sw" style="background:#dcfce7"></span>60–89%</span>
+  <span class="scale-item"><span class="scale-sw" style="background:#bbf7d0"></span>90–100%</span>
 </div>
 <div id="heatmap_root"></div>
 </div>
@@ -748,11 +749,11 @@ makeMatrix('c_matrix_extrap','extrap');
       if(isWinner) tr.style.background=TC[row.tok]+'0a';
 
       function sc(val){
-        if(val===0)  return{bg:'#4d1a20',fg:'#f87171'};
-        if(val<25)   return{bg:'#3d2a12',fg:'#fbbf24'};
-        if(val<60)   return{bg:'#1a1a40',fg:'#818cf8'};
-        if(val<90)   return{bg:'#0d3328',fg:'#34d399'};
-        return           {bg:'#0d5038',fg:'#6ee7b7'};
+        if(val===0)  return{bg:'#fee2e2',fg:'#991b1b',bd:'#fca5a5'};
+        if(val<25)   return{bg:'#fef3c7',fg:'#92400e',bd:'#fcd34d'};
+        if(val<60)   return{bg:'#dbeafe',fg:'#1e40af',bd:'#93c5fd'};
+        if(val<90)   return{bg:'#dcfce7',fg:'#166534',bd:'#86efac'};
+        return           {bg:'#bbf7d0',fg:'#14532d',bd:'#4ade80'};
       }
       const si=sc(row.bi), se=sc(row.be);
 
@@ -760,9 +761,9 @@ makeMatrix('c_matrix_extrap','extrap');
         <td style="color:${DC[domain]};font-family:'DM Mono',monospace;font-size:10px;">${domain}</td>
         <td><span class="rank-badge" style="background:${rankColors[ri]}22;color:${rankColors[ri]};border:1px solid ${rankColors[ri]}55;">#${ri+1}</span>${isWinner?'<span style="margin-left:6px;font-size:12px">★</span>':''}</td>
         <td><span class="tok-badge" style="background:${TC[row.tok]}18;color:${TC[row.tok]};border:1px solid ${TC[row.tok]}40"><span class="tok-dot" style="background:${TC[row.tok]}"></span>${row.tok}</span></td>
-        <td><span class="sval" style="background:${si.bg};color:${si.fg}">${row.bi.toFixed(1)}%</span></td>
+        <td><span class="sval" style="background:${si.bg};color:${si.fg};border-color:${si.bd}">${row.bi.toFixed(1)}%</span></td>
         <td style="color:#334155;font-size:10px">${row.bi_cfg}</td>
-        <td><span class="sval" style="background:${se.bg};color:${se.fg}">${row.be.toFixed(1)}%</span></td>
+        <td><span class="sval" style="background:${se.bg};color:${se.fg};border-color:${se.bd}">${row.be.toFixed(1)}%</span></td>
         <td style="color:#334155;font-size:10px">${row.be>0?row.be_cfg:'—'}</td>
         <td style="font-family:'DM Mono',monospace;color:${gap>50?'#f87171':gap>20?'#fbbf24':'#34d399'}">${gap.toFixed(1)}pp</td>
       `;
@@ -949,11 +950,11 @@ mmChart('c_mm_bpe','GraphBPE'); mmChart('c_mm_sh','SimHash');
 // ─── §6: HEATMAP ─────────────────────────────────────────────────────────────
 {
   function cs(val){
-    if(val===0)  return{bg:'#4d1a20',fg:'#f87171'};
-    if(val<25)   return{bg:'#3d2a12',fg:'#fbbf24'};
-    if(val<60)   return{bg:'#1a1a40',fg:'#818cf8'};
-    if(val<90)   return{bg:'#0d3328',fg:'#34d399'};
-    return           {bg:'#0d5038',fg:'#6ee7b7'};
+    if(val===0)  return{bg:'#fee2e2',fg:'#991b1b',bd:'#fca5a5'};
+    if(val<25)   return{bg:'#fef3c7',fg:'#92400e',bd:'#fcd34d'};
+    if(val<60)   return{bg:'#dbeafe',fg:'#1e40af',bd:'#93c5fd'};
+    if(val<90)   return{bg:'#dcfce7',fg:'#166534',bd:'#86efac'};
+    return           {bg:'#bbf7d0',fg:'#14532d',bd:'#4ade80'};
   }
 
   const DCFG={
@@ -1040,8 +1041,8 @@ mmChart('c_mm_bpe','GraphBPE'); mmChart('c_mm_sh','SimHash');
           <td style="color:${TC[tok]};opacity:0.55;font-size:10px">${tok}</td>
           <td style="color:${MC[r.model]};font-size:10px">${r.model}</td>
           <td><span style="color:${modeColor};font-size:10px">${r.mode==='delta'?'Δ delta':'S state'}</span></td>
-          <td><span class="hval" style="background:${is.bg};color:${is.fg}">${r.interp.toFixed(1)}%</span></td>
-          <td><span class="hval" style="background:${es.bg};color:${es.fg}">${r.extrap.toFixed(1)}%</span>${isBest&&tokBest>0?`<span style="font-family:'DM Mono',monospace;font-size:9px;margin-left:7px;color:${TC[tok]};opacity:0.75">← best</span>`:''}</td>`;
+          <td><span class="hval" style="background:${is.bg};color:${is.fg};border-color:${is.bd}">${r.interp.toFixed(1)}%</span></td>
+          <td><span class="hval" style="background:${es.bg};color:${es.fg};border-color:${es.bd}">${r.extrap.toFixed(1)}%</span>${isBest&&tokBest>0?`<span style="font-family:'DM Mono',monospace;font-size:9px;margin-left:7px;color:${TC[tok]};opacity:0.75">← best</span>`:''}</td>`;
         tbody.appendChild(tr);
         idx++;
       });
