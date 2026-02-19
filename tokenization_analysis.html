@@ -8,12 +8,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
 :root {
-  --bg:      #07070c;
-  --s1:      #0f0f18;
-  --s2:      #161622;
-  --s3:      #1d1d2e;
-  --border:  #26263a;
-  --border2: #1e1e2d;
+  --bg:      #f6f8fc;
+  --s1:      #ffffff;
+  --s2:      #f4f6fb;
+  --s3:      #edf1f9;
+  --border:  #d9dfeb;
+  --border2: #e6ebf4;
 
   /* Tokenizer colors — vivid, distinct */
   --wl:   #6e8efb;   /* blue-violet */
@@ -35,9 +35,9 @@
   --logist:  #fbbf24; /* yellow */
   --visitall:#34d399; /* emerald */
 
-  --text:  #e2e0f0;
-  --muted: #6b6b8a;
-  --dim:   #38384e;
+  --text:  #0b1220;
+  --muted: #334155;
+  --dim:   #475569;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -46,7 +46,7 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:'Sora',sans-serif;
-  font-weight:300;
+  font-weight:400;
   line-height:1.6;
 }
 
@@ -170,9 +170,9 @@ h2{font-family:'DM Serif Display',serif;font-size:26px;}
   font-size:9px;letter-spacing:0.14em;text-transform:uppercase;
   color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;
 }
-.sum-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.032);white-space:nowrap;}
+.sum-table td{padding:11px 14px;border-bottom:1px solid rgba(17,24,39,0.08);white-space:nowrap;}
 .sum-table tr:last-child td{border-bottom:none;}
-.sum-table tr:hover td{background:rgba(255,255,255,0.015);}
+.sum-table tr:hover td{background:rgba(17,24,39,0.03);}
 .tok-badge{
   display:inline-flex;align-items:center;gap:6px;
   padding:3px 10px 3px 6px;border-radius:3px;
@@ -215,10 +215,10 @@ h2{font-family:'DM Serif Display',serif;font-size:26px;}
 .hm-sl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:1px;}
 table.hm{width:100%;border-collapse:collapse;font-family:'DM Mono',monospace;font-size:11px;}
 table.hm th{padding:8px 14px;text-align:left;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
-table.hm td{padding:8px 14px;border-bottom:1px solid rgba(255,255,255,0.028);white-space:nowrap;}
+table.hm td{padding:8px 14px;border-bottom:1px solid rgba(17,24,39,0.08);white-space:nowrap;}
 table.hm tr:last-child td{border-bottom:none;}
-table.hm tr:hover td{background:rgba(255,255,255,0.012);}
-.tok-hdr td{padding:7px 14px;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,0.042);border-bottom:1px solid rgba(255,255,255,0.042);}
+table.hm tr:hover td{background:rgba(17,24,39,0.03);}
+.tok-hdr td{padding:7px 14px;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;border-top:1px solid rgba(17,24,39,0.1);border-bottom:1px solid rgba(17,24,39,0.1);}
 .tok-hdr.first td{border-top:none;}
 .tok-pill{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 5px;border-radius:3px;font-size:10px;font-weight:500;}
 .tok-pill .d{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
@@ -227,7 +227,7 @@ table.hm tr:hover td{background:rgba(255,255,255,0.012);}
 /* ─── SCALE ───────────────────────────────────────────── */
 .scale-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:20px;}
 .scale-item{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
-.scale-sw{width:30px;height:13px;border-radius:2px;border:1px solid rgba(255,255,255,0.08);}
+.scale-sw{width:30px;height:13px;border-radius:2px;border:1px solid rgba(17,24,39,0.14);}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
@@ -635,7 +635,7 @@ const MdC = {'delta':'#38bdf8','state':'#fb923c'};
 const BASE = {
   responsive:true, maintainAspectRatio:true, animation:{duration:600},
   plugins:{
-    legend:{labels:{color:'#6b6b8a',font:{family:'DM Mono',size:10},boxWidth:9,padding:11}},
+    legend:{labels:{color:'#334155',font:{family:'DM Mono',size:10},boxWidth:9,padding:11}},
     tooltip:{
       backgroundColor:'#161622',borderColor:'#26263a',borderWidth:1,
       titleColor:'#e2e0f0',bodyColor:'#8888aa',padding:10,
@@ -643,8 +643,8 @@ const BASE = {
     }
   },
   scales:{
-    x:{ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:10}},grid:{color:'rgba(255,255,255,0.04)'}},
-    y:{min:0,max:100,ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}
+    x:{ticks:{color:'#334155',font:{family:'DM Mono',size:10}},grid:{color:'rgba(17,24,39,0.1)'}},
+    y:{min:0,max:100,ticks:{color:'#334155',font:{family:'DM Mono',size:10},callback:v=>v+'%'},grid:{color:'rgba(17,24,39,0.1)'}}
   }
 };
 
@@ -682,7 +682,7 @@ const BASE = {
       {label:'Nonzero Extrap configs (of 16)',data:nzExtrap,backgroundColor:TOKS.map(t=>TC[t]+'cc'),borderColor:TOKS.map(t=>TC[t]),borderWidth:2,borderRadius:3},
     ]},
     options:{...BASE,
-      scales:{...BASE.scales,y:{...BASE.scales.y,max:16,ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:10},callback:v=>v}}},
+      scales:{...BASE.scales,y:{...BASE.scales.y,max:16,ticks:{color:'#334155',font:{family:'DM Mono',size:10},callback:v=>v}}},
       plugins:{...BASE.plugins,tooltip:{...BASE.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y} / 16 configs`}}}
     }
   });
@@ -711,7 +711,7 @@ makeMatrix('c_matrix_extrap','extrap');
 
 // ─── §2: RANKING TABLE ───────────────────────────────────────────────────────
 {
-  const rankColors = ['#ffd700','#c0c0c0','#cd7f32','#6b6b8a'];
+  const rankColors = ['#ffd700','#c0c0c0','#cd7f32','#334155'];
   const table = document.getElementById('ranking_table');
   table.innerHTML = `<thead><tr>
     <th>Domain</th><th>Rank</th><th>Tokenizer</th>
@@ -761,9 +761,9 @@ makeMatrix('c_matrix_extrap','extrap');
         <td><span class="rank-badge" style="background:${rankColors[ri]}22;color:${rankColors[ri]};border:1px solid ${rankColors[ri]}55;">#${ri+1}</span>${isWinner?'<span style="margin-left:6px;font-size:12px">★</span>':''}</td>
         <td><span class="tok-badge" style="background:${TC[row.tok]}18;color:${TC[row.tok]};border:1px solid ${TC[row.tok]}40"><span class="tok-dot" style="background:${TC[row.tok]}"></span>${row.tok}</span></td>
         <td><span class="sval" style="background:${si.bg};color:${si.fg}">${row.bi.toFixed(1)}%</span></td>
-        <td style="color:#6b6b8a;font-size:10px">${row.bi_cfg}</td>
+        <td style="color:#334155;font-size:10px">${row.bi_cfg}</td>
         <td><span class="sval" style="background:${se.bg};color:${se.fg}">${row.be.toFixed(1)}%</span></td>
-        <td style="color:#6b6b8a;font-size:10px">${row.be>0?row.be_cfg:'—'}</td>
+        <td style="color:#334155;font-size:10px">${row.be>0?row.be_cfg:'—'}</td>
         <td style="font-family:'DM Mono',monospace;color:${gap>50?'#f87171':gap>20?'#fbbf24':'#34d399'}">${gap.toFixed(1)}pp</td>
       `;
       tbody.appendChild(tr);
@@ -803,17 +803,17 @@ function tokDeepDive(id, tok) {
         legend:{...BASE.plugins.legend,
           labels:{...BASE.plugins.legend.labels,
             generateLabels:()=>[
-              {text:'Interp (Δ delta)',fillStyle:'#38bdf855',strokeStyle:'#38bdf8',lineWidth:1,fontColor:'#6b6b8a'},
-              {text:'Extrap (Δ delta)',fillStyle:'#38bdf8dd',strokeStyle:'#38bdf8',lineWidth:1,fontColor:'#6b6b8a'},
-              {text:'Interp (S state)',fillStyle:'#fb923c55',strokeStyle:'#fb923c',lineWidth:1,fontColor:'#6b6b8a'},
-              {text:'Extrap (S state)',fillStyle:'#fb923cdd',strokeStyle:'#fb923c',lineWidth:1,fontColor:'#6b6b8a'},
+              {text:'Interp (Δ delta)',fillStyle:'#38bdf855',strokeStyle:'#38bdf8',lineWidth:1,fontColor:'#334155'},
+              {text:'Extrap (Δ delta)',fillStyle:'#38bdf8dd',strokeStyle:'#38bdf8',lineWidth:1,fontColor:'#334155'},
+              {text:'Interp (S state)',fillStyle:'#fb923c55',strokeStyle:'#fb923c',lineWidth:1,fontColor:'#334155'},
+              {text:'Extrap (S state)',fillStyle:'#fb923cdd',strokeStyle:'#fb923c',lineWidth:1,fontColor:'#334155'},
             ]
           }
         },
         tooltip:{...BASE.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}
       },
       scales:{
-        x:{...BASE.scales.x,ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:8},maxRotation:70}},
+        x:{...BASE.scales.x,ticks:{color:'#334155',font:{family:'DM Mono',size:8},maxRotation:70}},
         y:BASE.scales.y
       }
     }
@@ -846,15 +846,15 @@ tokDeepDive('c_sh_all','SimHash');
   datasets.push({
     label:'extrap = interp (ref.)',
     data:[{x:0,y:0},{x:100,y:100}],
-    type:'line',borderColor:'rgba(255,255,255,0.1)',borderDash:[5,5],
+    type:'line',borderColor:'rgba(17,24,39,0.25)',borderDash:[5,5],
     borderWidth:1.5,pointRadius:0,fill:false,showLine:true,
   });
   new Chart(document.getElementById('c_scatter'),{
     type:'scatter',data:{datasets},
     options:{...BASE,
       scales:{
-        x:{...BASE.scales.x,min:0,max:108,title:{display:true,text:'Best Interpolation Solved%',color:'#6b6b8a',font:{family:'DM Mono',size:10}},ticks:{...BASE.scales.x.ticks,callback:v=>v+'%'}},
-        y:{...BASE.scales.y,title:{display:true,text:'Best Extrapolation Solved%',color:'#6b6b8a',font:{family:'DM Mono',size:10}}}
+        x:{...BASE.scales.x,min:0,max:108,title:{display:true,text:'Best Interpolation Solved%',color:'#334155',font:{family:'DM Mono',size:10}},ticks:{...BASE.scales.x.ticks,callback:v=>v+'%'}},
+        y:{...BASE.scales.y,title:{display:true,text:'Best Extrapolation Solved%',color:'#334155',font:{family:'DM Mono',size:10}}}
       },
       plugins:{...BASE.plugins,tooltip:{...BASE.plugins.tooltip,
         callbacks:{label:ctx=>ctx.raw.domain?` ${ctx.dataset.label} · ${ctx.raw.domain}  →  interp=${ctx.raw.x?.toFixed(1)}%  extrap=${ctx.raw.y?.toFixed(1)}%`:` ${ctx.dataset.label}`}
@@ -878,7 +878,7 @@ function gapChart(id, tok){
     options:{...BASE,
       plugins:{...BASE.plugins,legend:{...BASE.plugins.legend,labels:{...BASE.plugins.legend.labels,font:{family:'DM Mono',size:9},padding:8}}},
       scales:{
-        x:{...BASE.scales.x,ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:9}}},
+        x:{...BASE.scales.x,ticks:{color:'#334155',font:{family:'DM Mono',size:9}}},
         y:BASE.scales.y
       }
     }
@@ -939,7 +939,7 @@ function mmChart(id,tok){
     type:'bar',data:{labels:DOMAINS.map(d=>d.slice(0,4)),datasets},
     options:{...BASE,
       plugins:{...BASE.plugins,legend:{...BASE.plugins.legend,labels:{...BASE.plugins.legend.labels,font:{family:'DM Mono',size:9},padding:8}}},
-      scales:{x:{...BASE.scales.x,ticks:{color:'#6b6b8a',font:{family:'DM Mono',size:9}}},y:BASE.scales.y}
+      scales:{x:{...BASE.scales.x,ticks:{color:'#334155',font:{family:'DM Mono',size:9}}},y:BASE.scales.y}
     }
   });
 }
@@ -996,7 +996,7 @@ mmChart('c_mm_bpe','GraphBPE'); mmChart('c_mm_sh','SimHash');
           <div class="hm-sl">Best Extrap</div>
         </div>
         <div class="hm-stat">
-          <div class="hm-sv" style="color:${bestI>=90?'#34d399':'#6b6b8a'}">${bestI>0?bestI.toFixed(1)+'%':'0%'}</div>
+          <div class="hm-sv" style="color:${bestI>=90?'#34d399':'#334155'}">${bestI>0?bestI.toFixed(1)+'%':'0%'}</div>
           <div class="hm-sl">Best Interp</div>
         </div>
       </div>`;
@@ -1023,7 +1023,7 @@ mmChart('c_mm_bpe','GraphBPE'); mmChart('c_mm_sh','SimHash');
           <span class="tok-pill" style="background:${TC[tok]}1c;border:1px solid ${TC[tok]}44;color:${TC[tok]}">
             <span class="d" style="background:${TC[tok]}"></span>${tok}
           </span>
-          <span style="font-family:'DM Mono',monospace;font-size:9px;color:#6b6b8a">
+          <span style="font-family:'DM Mono',monospace;font-size:9px;color:#334155">
             best extrap: <span style="color:${tokBest>0?TC[tok]:'#f87171'};font-weight:500">${tokBest>0?tokBest.toFixed(1)+'%':'0%'}</span>
           </span>
         </div></td>`;
@@ -1036,7 +1036,7 @@ mmChart('c_mm_bpe','GraphBPE'); mmChart('c_mm_sh','SimHash');
         const tr=document.createElement('tr');
         if(isBest) tr.style.background=TC[tok]+'09';
         tr.innerHTML=`
-          <td style="font-size:9px;color:#6b6b8a;padding-left:${isBest?'0':'13px'};${isBest?`border-left:2.5px solid ${TC[tok]}`:''}">${isBest?'★':idx}</td>
+          <td style="font-size:9px;color:#334155;padding-left:${isBest?'0':'13px'};${isBest?`border-left:2.5px solid ${TC[tok]}`:''}">${isBest?'★':idx}</td>
           <td style="color:${TC[tok]};opacity:0.55;font-size:10px">${tok}</td>
           <td style="color:${MC[r.model]};font-size:10px">${r.model}</td>
           <td><span style="color:${modeColor};font-size:10px">${r.mode==='delta'?'Δ delta':'S state'}</span></td>
